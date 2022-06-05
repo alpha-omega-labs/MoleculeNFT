@@ -9,7 +9,7 @@ contract SVGNFT is ERC721URIStorage, Ownable {
     uint256 public tokenCounter;
     event CreatedSVGNFT(uint256 indexed tokenId, string tokenURI);
 
-    constructor() ERC721("SVG NFT", "svgNFT")
+    constructor() ERC721("MolNFT L1", "MolNFTL1")
     {
         tokenCounter = 0;
     }
@@ -39,8 +39,8 @@ contract SVGNFT is ERC721URIStorage, Ownable {
                         bytes(
                             abi.encodePacked(
                                 '{"name":"',
-                                "SVG NFT", // You can add whatever name here
-                                '", "description":"An NFT based on SVG!", "attributes":"", "image":"',imageURI,'"}'
+                                "MolNFTL1", // You can add whatever name here
+                                '", "description":"An NFT based on molecular structures!", "attributes":"", "image":"',imageURI,'"}'
                             )
                         )
                     )
