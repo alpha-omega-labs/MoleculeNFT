@@ -3,7 +3,7 @@
 103D
 THE UNUSUAL STRUCTURE OF THE HUMAN CENTROMERE (GGA)2 MOTIF: UNPAIRED GUANOSINE RESIDUES STACKED BETWEEN SHEARED G(DOT)A PAIRS
 
-https://genesisl1.io/PDBID/103D
+https://molnft.org/PDBID/103D
 
 # Proof of concept:
 
@@ -23,4 +23,4 @@ GenesisL1 blockchain first time ever stored molecular structure file entirely on
 txid: 0xa49427f22a3441e3e4a8944496c826cfacec27067ced4eb16f268298412abf30
 Cumulative Gas Used 19,616,081
 
-GenesisL1 blockchain is capable to store molecular structures entirely on blockchain, comparatively high GenesisL1block gas limit (100M) should be significantly raised to fit all large structures e.g. 100M to 500M 
+GenesisL1 blockchain is capable to store molecular structures entirely on blockchain, comparatively high GenesisL1block gas limit (100M) should be significantly raised to fit all large structures e.g. 100M to 10B
