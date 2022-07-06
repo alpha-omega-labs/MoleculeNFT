@@ -49,11 +49,11 @@ contract MOLNFT is ERC721Enumerable, ERC721URIStorage, Ownable {
     }
 
     function safeMint(string memory _source, string memory _pdbid, string memory _title, string memory _sequences, string memory _organism, string memory _method, string memory _resolution) public onlyOwner() {
+        _tokenIdCounter.increment();
         _safeMint(msg.sender, _tokenIdCounter.current());
         string memory imageURI = svgToImageURI(_source);
         _setTokenURI(_tokenIdCounter.current(), formatTokenURI(imageURI, _pdbid, _title, _sequences, _organism, _method, _resolution));
         emit tokenChanged(_tokenIdCounter.current());
-        _tokenIdCounter.increment();
     }
 
  // Delete data altering possibility
