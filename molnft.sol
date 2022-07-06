@@ -56,10 +56,11 @@ contract MOLNFT is ERC721Enumerable, ERC721URIStorage, Ownable {
         _tokenIdCounter.increment();
     }
 
-    function setTokenURI(uint256 _tokenId, string memory _tokenURI) public onlyOwner() {
-        _setTokenURI(_tokenId, _tokenURI);
-        emit tokenChanged(_tokenId);
-    }
+ // Delete data altering possibility
+ // function setTokenURI(uint256 _tokenId, string memory _tokenURI) public onlyOwner() {
+ //     _setTokenURI(_tokenId, _tokenURI);
+ //     emit tokenChanged(_tokenId);
+ // }
 
     function setContractURI(string memory contractURI_) public onlyOwner() {
         _contractURI = string(abi.encodePacked(
