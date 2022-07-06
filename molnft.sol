@@ -6,12 +6,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-
 import "./Base64.sol";
 
-/// @author mbvissers on Medium
-// USE AT YOUR OWN RISK
-contract NFTONCHAIN is ERC721Enumerable, ERC721URIStorage, Ownable {
+contract MOLNFT is ERC721Enumerable, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     using Strings for uint256;
 
@@ -22,18 +19,15 @@ contract NFTONCHAIN is ERC721Enumerable, ERC721URIStorage, Ownable {
 
     mapping(uint256 => string) private _svgSources;
 
-    constructor() ERC721("Test", "T") {}
+    constructor() ERC721("Molecule", "MolNFT") {}
 
     function svgToImageURI(string memory _source) public pure returns (string memory) {
-        // example:
-        // <svg width='500' height='500' viewBox='0 0 285 350' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill='black' d='M150,0,L75,200,L225,200,Z'></path></svg>
-        // data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNTAwJyBoZWlnaHQ9JzUwMCcgdmlld0JveD0nMCAwIDI4NSAzNTAnIGZpbGw9J25vbmUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZmlsbD0nYmxhY2snIGQ9J00xNTAsMCxMNzUsMjAwLEwyMjUsMjAwLFonPjwvcGF0aD48L3N2Zz4=
-        string memory baseURL = "data:image/svg+xml;base64,";
+        string memory baseURL = "data:application/octet-stream;base64,";
         string memory svgBase64Encoded = Base64.encode(bytes(string(abi.encodePacked(_source))));
         return string(abi.encodePacked(baseURL, svgBase64Encoded));
     }
 
-    function formatTokenURI(string memory _imageURI, string memory _pdbid, string memory _title, string memory _sequences) public pure returns (string memory) {
+    function formatTokenURI(string memory _imageURI, string memory _pdbid, string memory _title, string memory _sequences, string memory _organism, string memory _method, string memory _resolution) public pure returns (string memory) {
         return string(
             abi.encodePacked(
                 "data:application/json;base64,",
@@ -43,6 +37,9 @@ contract NFTONCHAIN is ERC721Enumerable, ERC721URIStorage, Ownable {
                             '{"pdbid":"', _pdbid,
                             '", "title": "', _title, '"',
                             ', "sequences": ', _sequences,
+                            ', "organism": ', _organism,
+                            ', "method": ', _method,
+                            ', "resolution": ', _resolution,
                             ', "image":"', _imageURI, '"}'
                         )
                     )
@@ -51,10 +48,10 @@ contract NFTONCHAIN is ERC721Enumerable, ERC721URIStorage, Ownable {
         );
     }
 
-    function safeMint(string memory _source, string memory _pdbid, string memory _title, string memory _sequences) public onlyOwner() {
+    function safeMint(string memory _source, string memory _pdbid, string memory _title, string memory _sequences, string memory _organism, string memory _method, string memory _resolution) public onlyOwner() {
         _safeMint(msg.sender, _tokenIdCounter.current());
         string memory imageURI = svgToImageURI(_source);
-        _setTokenURI(_tokenIdCounter.current(), formatTokenURI(imageURI, _pdbid, _title, _sequences));
+        _setTokenURI(_tokenIdCounter.current(), formatTokenURI(imageURI, _pdbid, _title, _sequences, _organism, _method, _resolution));
         emit tokenChanged(_tokenIdCounter.current());
         _tokenIdCounter.increment();
     }
