@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "./Base64.sol";
+import "./base64.sol";
 
 contract MOLNFT is ERC721Enumerable, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
