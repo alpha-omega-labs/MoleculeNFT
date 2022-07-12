@@ -1,4 +1,7 @@
-Test smart contract address on GenesisL1 blockchain: <pre>0x8E6AcA14DAA4C9c8251196B8dB65256e0B583Bf3</pre>
+Test smart contract address on GenesisL1 blockchain MolNFT: <pre>0x8E6AcA14DAA4C9c8251196B8dB65256e0B583Bf3</pre>
+
+Test smart contract address on GenesisL1 blockchain DatasetNFT: <pre>0x4D7307C9cC76Ba749570C59f32fe3Ab84e0a4982</pre>
+
 Test MOLNFT ID #0: HEMOGLOBIN (ALPHA + MET) VARIANT; PDBID: 1BZ1 
 
 
